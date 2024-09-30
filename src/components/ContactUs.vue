@@ -1,20 +1,15 @@
 <template>
   <div>
-    <h2>Contact us to choose your character</h2>
-    <div class="forms-container">
-      <CharactersForm :formData="form1Data" @update:formData="form1Data = $event" />
-      <CharactersForm :formData="form2Data" @update:formData="form2Data = $event" />
-    </div>
+    <character-form :initialData="form1Data" @sync="updateForm2" @updateFormData="checkSync" />
+    <character-form :initialData="form2Data" @sync="updateForm1" @updateFormData="checkSync" />
   </div>
 </template>
 
 <script>
-import CharactersForm from './CharactersForm.vue';
+import CharacterForm from './CharacterForm.vue';
 
 export default {
-  components: {
-    CharactersForm
-  },
+  components: { CharacterForm },
   data() {
     return {
       form1Data: {
@@ -23,12 +18,8 @@ export default {
         height: '',
         gender: '',
         isMaster: false,
-        race: 'human',
-        class: 'warrior',
-        talents: {
-          magic: false,
-          sword: false
-        },
+        race: '',
+        class: '',
         hairColor: '#000000',
         bio: ''
       },
@@ -38,23 +29,23 @@ export default {
         height: '',
         gender: '',
         isMaster: false,
-        race: 'human',
-        class: 'warrior',
-        talents: {
-          magic: false,
-          sword: false
-        },
+        race: '',
+        class: '',
         hairColor: '#000000',
         bio: ''
       }
     };
+  },
+  methods: {
+    updateForm1(data) {
+      this.form1Data = { ...data };
+    },
+    updateForm2(data) {
+      this.form2Data = { ...data };
+    },
+    checkSync() {
+      // Дополнительная логика для проверки синхронизации
+    }
   }
 };
 </script>
-<style lang="scss" scoped>
-.forms-container{
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-</style>
