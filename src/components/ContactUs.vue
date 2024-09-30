@@ -44,7 +44,7 @@ export default {
       this.form2Data = { ...data };
     },
     checkSync() {
-      // Дополнительная логика для проверки синхронизации
+
     }
   }
 };

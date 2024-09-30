@@ -2,8 +2,8 @@ import Vue from 'vue';
 import Router from 'vue-router'; 
 
 import ContactUs from '@/components/ContactUs.vue';
-import PostsAPI from '@/components/PostsAPI.vue';
-import PostDetails from '@/components/PostDetails.vue';
+import PostList from '@/components/PostList.vue'; 
+import SinglePost from '@/components/SinglePost.vue'; 
 
 Vue.use(Router);
 
@@ -17,13 +17,13 @@ export default new Router({
     },
     {
       path: '/posts',
-      name: 'PostsAPI',
-      component: PostsAPI
+      name: 'post-list', 
+      component: PostList
     },
     {
       path: '/post/:id',
-      name: 'PostDetails',
-      component: PostDetails
+      name: 'single-post', 
+      component: SinglePost
     }
   ]
 });
